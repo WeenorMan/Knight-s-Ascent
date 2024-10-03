@@ -21,13 +21,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X) && cooldownTimer > attackCooldown && PlayerMovement.canAttack())
+        if (Input.GetKeyDown(KeyCode.X) && cooldownTimer > attackCooldown && PlayerMovement.CanAttack())
         {
             Attack();
 
             cooldownTimer += Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.Z) && cooldownTimer > attackCooldown && PlayerMovement.canAttack())
+        else if (Input.GetKeyDown(KeyCode.Z) && cooldownTimer > attackCooldown && PlayerMovement.CanAttack())
         {
             Cast();
 

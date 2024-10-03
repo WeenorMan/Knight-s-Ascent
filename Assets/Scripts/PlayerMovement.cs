@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
 
         //Set animator parameters
         anim.SetBool("walk", horizontalInput != 0);
-        anim.SetBool("isgrounded", isGrounded());
+        anim.SetBool("isgrounded", IsGrounded());
 
         //wall jump logic
         if (wallJumpCooldown > 0.2f)
         {
             rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
-            if(onWall() && !isGrounded())
+            if(OnWall() && !IsGrounded())
             {
                 rb.gravityScale = 0;
                 rb.velocity = Vector2.zero;
@@ -70,12 +70,12 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         //jump method
-        if (isGrounded())
+        if (IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
             anim.SetTrigger("jump");
         }
-        else if (onWall() && !isGrounded())
+        else if (OnWall() && !IsGrounded())
         {
             if (horizontalInput == 0)
             {
@@ -93,20 +93,20 @@ public class PlayerMovement : MonoBehaviour
 
     }
     
-    private bool isGrounded()
+    private bool IsGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
 
-    private bool onWall()
+    private bool OnWall()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
 
-    public bool canAttack()
+    public bool CanAttack()
     {
-        return isGrounded() && !onWall();
+        return IsGrounded() && !OnWall();
     }
 }
