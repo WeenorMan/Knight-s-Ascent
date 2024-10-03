@@ -23,7 +23,7 @@ public class Collision : MonoBehaviour
 
         hit = Physics2D.Raycast(transform.position + offset, -Vector2.up, rayLength, groundLayer);
 
-        Color hitColor = Color.white;
+        Color hitColor = Color.red;
 
 
         if (hit.collider != null)
