@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Helper : MonoBehaviour
 {
-     LayerMask groundLayer;
+    LayerMask groundLayer;
     SpriteRenderer spriteRenderer;
 
     public void Start()
@@ -26,7 +26,7 @@ public class Helper : MonoBehaviour
 
     public bool ExtendedRayCollisionCheck(float xoffs, float yoffs)
     {
-        float rayLength = 3f; // length of raycast
+        float rayLength = 2f; // length of raycast
         bool hitSomething = false;
 
         // convert x and y offset into a Vector3 

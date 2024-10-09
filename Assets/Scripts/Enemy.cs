@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float speed;
-    public GameObject player;
+    [SerializeField] float patrolSpeed;
+    
     Helper helper;
     Rigidbody2D rb;
-    float px, ex;
     SpriteRenderer spriteRenderer;
-    float enemyDirection;
+    LayerMask groundLayer;
+
     void Start()
     {
         helper = gameObject.AddComponent<Helper>();
@@ -21,27 +22,33 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         EnemyPatrol();
-        
     }
 
     public void EnemyPatrol()
     {
-        bool hit;
-        hit = helper.ExtendedRayCollisionCheck(-0.5f, 0);
-        hit = helper.ExtendedRayCollisionCheck(0.5f, 0);
+        bool leftHit = helper.ExtendedRayCollisionCheck(-0.5f, 0f);
+        bool rightHit = helper.ExtendedRayCollisionCheck(0.5f, 0f);
 
-        if (rb.velocity.x < 0f && !hit)
+
+        if (rb.velocity.x < 0.1f && !leftHit)
         {
-            helper.FlipObject(true);
+            transform.localScale = new Vector3(1, 1, 1);
             rb.velocity = new Vector2(-3f, rb.velocity.y);
 
         }
-        if (rb.velocity.x > 0f && !hit)
+        if (rb.velocity.x > 0.1f && !rightHit)
         {
-            helper.FlipObject(false);
+            transform.localScale = new Vector3(-1, 1, 1);
             rb.velocity = new Vector2(3f, rb.velocity.y);
 
         }
+        else 
+        {
+            transform.localScale = new Vector3(-1,1,1);
+            rb.velocity = new Vector2(-3f, rb.velocity.y);
+        }
+    
+        
 
     }
 }

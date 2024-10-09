@@ -1243,7 +1243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caea2ef04d738464392182e1c4c09261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1491346043}
+  player: {fileID: 1441847329}
   offset: {x: 0, y: 0, z: -10}
   smoothTime: 0.25
 --- !u!1 &610846233
@@ -1843,7 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999573424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -2311,9 +2311,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1441847329}
   - component: {fileID: 1441847328}
-  - component: {fileID: 1441847327}
   - component: {fileID: 1441847331}
   - component: {fileID: 1441847332}
+  - component: {fileID: 1441847333}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2321,43 +2321,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!70 &1441847327
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441847326}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.020706177, y: -0.42366457}
-  m_Size: {x: 1.2134533, y: 1.5776415}
-  m_Direction: 0
 --- !u!212 &1441847328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2419,7 +2382,7 @@ Transform:
   m_GameObject: {fileID: 1441847326}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.04, y: 3.97, z: 0.0850751}
+  m_LocalPosition: {x: 12.03, y: 3.99, z: 0.0850751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2464,8 +2427,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910fff2520e438940b47e566f82ba7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  player: {fileID: 1491346038}
+  patrolSpeed: 3
+--- !u!61 &1441847333
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441847326}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.018153667, y: -0.5325005}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.12, y: 2.56}
+    newSize: {x: 5.12, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 1.3}
+  m_EdgeRadius: 0
 --- !u!1 &1450184303
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2621,7 @@ GameObject:
   - component: {fileID: 1491346044}
   - component: {fileID: 1491346045}
   - component: {fileID: 1491346046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2840,7 +2848,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64fe18cac3169d4e8ac4385d572013b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 3
+  currentHealth: 0
 --- !u!1 &1514883112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3396,10 +3405,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2098682641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -583, y: 486}
-  m_SizeDelta: {x: 701.6499, y: 98.9318}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 372, y: -57}
+  m_SizeDelta: {x: 701.6499, y: 98.93182}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928128099
 MonoBehaviour:
@@ -3471,10 +3480,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2098682641}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -583, y: 486}
-  m_SizeDelta: {x: 701.6499, y: 98.9318}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 372, y: -57}
+  m_SizeDelta: {x: 701.6499, y: 98.93182}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1994501268
 MonoBehaviour:
@@ -3523,6 +3532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2098682641}
+  - component: {fileID: 2098682642}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -3551,6 +3561,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2098682642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098682640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5996f256ac37c44990a1914ea57419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1491346046}
+  totalHealthBar: {fileID: 1928128099}
+  currentHealthBar: {fileID: 1994501268}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
