@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage(float _damage)
     {
+        
+
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, maxHealth);
 
         if (currentHealth > 0)
@@ -27,9 +29,20 @@ public class Health : MonoBehaviour
             if(!dead)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerMovement>().enabled = false;
-
+                if (GetComponent<PlayerMovement>() != null)
+                {
+                    GetComponent<PlayerMovement>().enabled = false;
+                }
+                
+                if(GetComponent<Enemy>() != null)
+                {
+                    GetComponent<Enemy>().enabled = false;
+                    GetComponent<BoxCollider2D>().enabled = false;
+                }
+                
                 dead = true;
+
+                 
             }
             
         }

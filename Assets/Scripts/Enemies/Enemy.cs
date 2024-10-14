@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private LayerMask playerLayer;
-    
+    [SerializeField] private LayerMask groundLayer;
+
+
     private float cooldownTimer = Mathf.Infinity;
     private Animator anim;
     private Health playerHealth;
@@ -32,6 +34,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        rb.velocity = new Vector2(patrolSpeed, rb.velocity.y);
+
+
+        EnemyPatrol();
+        
+
         cooldownTimer += Time.deltaTime;
 
         if (PlayerInSight())
@@ -73,4 +81,26 @@ public class Enemy : MonoBehaviour
             playerHealth.TakeDamage(damage);
         }
     }
+
+    public void EnemyPatrol()
+    {
+        bool lefthit = helper.ExtendedRayCollisionCheck(-0.5f, 0f);
+        bool righthit = helper.ExtendedRayCollisionCheck(0.5f, 0f);
+        anim.SetBool("moving", true);
+
+        if(rb.velocity.x < 0f && !lefthit)
+        {
+            transform.localScale = new Vector3(3,3,3);
+            patrolSpeed = -patrolSpeed;
+        }
+        if(rb.velocity.x > 0f && !righthit)
+        {
+            transform.localScale = new Vector3(-3,3,3);  
+            patrolSpeed = -patrolSpeed;
+
+        }
+
+    }
+
+    
 }

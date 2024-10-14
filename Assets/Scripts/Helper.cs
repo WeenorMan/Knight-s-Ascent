@@ -4,10 +4,12 @@ using UnityEngine;
 public class Helper : MonoBehaviour
 {
     LayerMask groundLayer;
+    LayerMask wallLayer;
     SpriteRenderer spriteRenderer;
 
     public void Start()
     {
+        wallLayer = LayerMask.GetMask("Wall");
         groundLayer = LayerMask.GetMask("Ground");
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -37,6 +39,7 @@ public class Helper : MonoBehaviour
 
 
         hit = Physics2D.Raycast(transform.position + offset, -Vector2.up, rayLength, groundLayer);
+
 
         Color hitColor = Color.red;
 
