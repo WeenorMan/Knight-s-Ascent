@@ -1,4 +1,5 @@
  using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D boxCollider;
+    private PlayerControls controls;
     private float horizontalInput;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        controls = new PlayerControls();
     }
 
     private void Update()

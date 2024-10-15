@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
 
-
+    private PlayerControls controls;
     private Animator anim;
     private PlayerMovement PlayerMovement;
     private float cooldownTimer = Mathf.Infinity;
@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         PlayerMovement = GetComponent<PlayerMovement>();
+        controls = new PlayerControls();
     }
 
     private void Update()
