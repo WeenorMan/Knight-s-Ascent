@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910fff2520e438940b47e566f82ba7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 0
+  patrolSpeed: 1.5
   attackCooldown: 0
   range: 1.3
   colliderDistance: 0.75
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64fe18cac3169d4e8ac4385d572013b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 2
   currentHealth: 0
 --- !u!50 &830201528290267098
 Rigidbody2D:

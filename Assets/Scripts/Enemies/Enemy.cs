@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
     {
         bool lefthit = helper.ExtendedRayCollisionCheck(-0.5f, 0f);
         bool righthit = helper.ExtendedRayCollisionCheck(0.5f, 0f);
-        anim.SetBool("moving", true);
+        
 
         if(rb.velocity.x < 0f && !lefthit)
         {

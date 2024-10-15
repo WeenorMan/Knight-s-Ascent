@@ -11,9 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
     private BoxCollider2D boxCollider;
-    private float wallJumpCooldown;
     private float horizontalInput;
-
 
     private void Awake()
     {
@@ -26,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
         //flips the player left or right
         if (horizontalInput > 0.01f)
@@ -41,30 +40,18 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("isgrounded", IsGrounded());
 
-        //wall jump logic
-        if (wallJumpCooldown > 0.2f)
+        //Jump
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+            Jump();
+        } 
 
-            if(OnWall() && !IsGrounded())
-            {
-                rb.gravityScale = 0;
-                rb.velocity = Vector2.zero;
-            }
-            else
-            {
-                rb.gravityScale = 1.9f;
-            }
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Jump();
-            }
-        }
-        else
+        //Jump height adjuster
+        if(Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
-            wallJumpCooldown += Time.deltaTime;
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
         }
-
+        
     }
 
     private void Jump()
@@ -73,24 +60,8 @@ public class PlayerMovement : MonoBehaviour
         if (IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
-            anim.SetTrigger("jump");
         }
-        else if (OnWall() && !IsGrounded())
-        {
-            if (horizontalInput == 0)
-            {
-                rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-            else
-            {
-                rb.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-            }
-            wallJumpCooldown = 0;
-            
-        }
-
-
+        
     }
     
     private bool IsGrounded()
