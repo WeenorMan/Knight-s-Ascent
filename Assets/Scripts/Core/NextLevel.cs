@@ -9,7 +9,7 @@ public class NextLevel : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
