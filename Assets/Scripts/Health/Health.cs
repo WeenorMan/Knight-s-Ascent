@@ -1,4 +1,4 @@
-
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
                 if (GetComponent<PlayerMovement>() != null)
                 {
                     GetComponent<PlayerMovement>().enabled = false;
+                    SceneManager.LoadScene("Level1");
                 }
                 
                 if(GetComponent<Enemy>() != null)

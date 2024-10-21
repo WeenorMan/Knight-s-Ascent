@@ -25,9 +25,9 @@ public class Helper : MonoBehaviour
         }
     }
 
-    public bool ExtendedRayCollisionCheck(float xoffs, float yoffs)
+
+    public bool ExtendedRayCollisionCheck(float xoffs, float yoffs, Vector2 dir, float rayLength, LayerMask layer )
     {
-        float rayLength = 2f; // length of raycast
         bool hitSomething = false;
 
         // convert x and y offset into a Vector3 
@@ -37,7 +37,7 @@ public class Helper : MonoBehaviour
         RaycastHit2D hit;
 
 
-        hit = Physics2D.Raycast(transform.position + offset, -Vector2.up, rayLength, groundLayer);
+        hit = Physics2D.Raycast(transform.position + offset, dir, rayLength, layer);
 
 
         Color hitColor = Color.red;
@@ -51,7 +51,7 @@ public class Helper : MonoBehaviour
         }
         // draw a debug ray to show ray position
         // You need to enable gizmos in the editor to see these
-        Debug.DrawRay(transform.position + offset, -Vector3.up * rayLength, hitColor);
+        Debug.DrawRay(transform.position + offset, dir * rayLength, hitColor);
 
         return hitSomething;
 

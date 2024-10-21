@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        bool hit;
         rb.velocity = new Vector2(patrolSpeed, rb.velocity.y);
 
 
@@ -42,10 +43,16 @@ public class Enemy : MonoBehaviour
 
         cooldownTimer += Time.deltaTime;
 
+
+        hit = helper.ExtendedRayCollisionCheck(0, 0, Vector2.right, -2, playerLayer);
+        hit = helper.ExtendedRayCollisionCheck(0, 0, Vector2.right, 2, playerLayer);
+
         if (PlayerInSight())
         {
+            print("PlayerInSight");
             if (cooldownTimer >= attackCooldown)
             {
+                
                 cooldownTimer = 0;
                 anim.SetTrigger("attack");
             }
@@ -62,9 +69,10 @@ public class Enemy : MonoBehaviour
         if(hit.collider != null)
         {
             playerHealth = hit.transform.GetComponent<Health>();
+            return true;
         }
 
-        return hit.collider != null;
+        return false;
     }
 
     private void OnDrawGizmos()
@@ -84,9 +92,9 @@ public class Enemy : MonoBehaviour
 
     public void EnemyPatrol()
     {
-        bool lefthit = helper.ExtendedRayCollisionCheck(-0.5f, 0f);
-        bool righthit = helper.ExtendedRayCollisionCheck(0.5f, 0f);
-        
+        bool lefthit = helper.ExtendedRayCollisionCheck(-0.5f, 0f, Vector2.down, 2, groundLayer );
+        bool righthit = helper.ExtendedRayCollisionCheck(0.5f, 0f, Vector2.down, 2, groundLayer );
+        anim.SetBool("moving", true);
 
         if(rb.velocity.x < 0f && !lefthit)
         {
