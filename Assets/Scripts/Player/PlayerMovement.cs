@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     private PlayerControls controls;
+    private PauseMenu pauseMenu;
     private float horizontalInput;
 
     private void Awake()
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         controls = new PlayerControls();
+        pauseMenu = GetComponent<PauseMenu>();
     }
 
     private void Update()
@@ -82,5 +84,6 @@ public class PlayerMovement : MonoBehaviour
     public bool CanAttack()
     {
         return !OnWall();
+        
     }
 }

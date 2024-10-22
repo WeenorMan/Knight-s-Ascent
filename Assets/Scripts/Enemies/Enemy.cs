@@ -69,10 +69,10 @@ public class Enemy : MonoBehaviour
         if(hit.collider != null)
         {
             playerHealth = hit.transform.GetComponent<Health>();
-            return true;
+            
         }
 
-        return false;
+        return hit.collider != null; 
     }
 
     private void OnDrawGizmos()
